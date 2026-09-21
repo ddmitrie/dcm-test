@@ -4,20 +4,8 @@ metadata:
   name: gitops-two-tier-storage
 spec:
   display_name: gitops-two-tier-storage
-  catalog_item_id: two-tier-web-with-embedded-storage
+  catalog_item_id: embedded-storage-smoke-test
   user_values:
-    - resource: backend
-      path: metadata.name
-      value: gitops-storage-backend
-    - resource: backend
-      path: image.reference
-      value: docker.io/library/nginx:alpine
-    - resource: frontend
-      path: metadata.name
-      value: gitops-storage-frontend
-    - resource: frontend
-      path: image.reference
-      value: docker.io/library/httpd:2.4-alpine
     - resource: storage
       path: metadata.name
       value: gitops-storage-volume
