@@ -24,10 +24,10 @@ spec:
           default: 1
         - path: resources.memory.min
           editable: false
-          default: 128MB
+          default: "128MB"
         - path: resources.memory.max
           editable: false
-          default: 256MB
+          default: "256MB"
     - name: frontend
       service_type: container
       requires_resources:
@@ -52,10 +52,10 @@ spec:
           default: 1
         - path: resources.memory.min
           editable: false
-          default: 128MB
+          default: "128MB"
         - path: resources.memory.max
           editable: false
-          default: 256MB
+          default: "256MB"
     - name: storage
       service_type: storage
       requires_resources:
