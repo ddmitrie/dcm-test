@@ -1,0 +1,29 @@
+api_version: v1alpha1
+kind: CatalogItemInstance
+metadata:
+  name: gitops-two-tier-storage
+spec:
+  display_name: gitops-two-tier-storage
+  catalog_item_id: two-tier-web-with-embedded-storage
+  user_values:
+    - resource: backend
+      path: metadata.name
+      value: gitops-storage-backend
+    - resource: backend
+      path: image.reference
+      value: docker.io/library/nginx:alpine
+    - resource: frontend
+      path: metadata.name
+      value: gitops-storage-frontend
+    - resource: frontend
+      path: image.reference
+      value: docker.io/library/httpd:alpine
+    - resource: storage
+      path: metadata.name
+      value: gitops-storage-volume
+    - resource: storage
+      path: capacity
+      value: 1Gi
+    - resource: storage
+      path: volume_name
+      value: gitops-storage-volume

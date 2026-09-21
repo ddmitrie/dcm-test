@@ -1,0 +1,86 @@
+api_version: v1alpha1
+display_name: Two-tier web with embedded storage
+spec:
+  resources:
+    - name: backend
+      service_type: container
+      fields:
+        - path: metadata.name
+          display_name: Backend name
+          editable: true
+          default: decl-backend
+        - path: metadata.labels
+          display_name: Backend labels
+          editable: true
+        - path: image.reference
+          display_name: Image
+          editable: true
+          default: docker.io/library/nginx:alpine
+        - path: resources.cpu.min
+          editable: false
+          default: 1
+        - path: resources.cpu.max
+          editable: false
+          default: 1
+        - path: resources.memory.min
+          editable: false
+          default: 128MB
+        - path: resources.memory.max
+          editable: false
+          default: 256MB
+    - name: frontend
+      service_type: container
+      requires_resources:
+        - backend
+      fields:
+        - path: metadata.name
+          display_name: Frontend name
+          editable: true
+          default: decl-frontend
+        - path: metadata.labels
+          display_name: Frontend labels
+          editable: true
+        - path: image.reference
+          display_name: Image
+          editable: true
+          default: docker.io/library/httpd:alpine
+        - path: resources.cpu.min
+          editable: false
+          default: 1
+        - path: resources.cpu.max
+          editable: false
+          default: 1
+        - path: resources.memory.min
+          editable: false
+          default: 128MB
+        - path: resources.memory.max
+          editable: false
+          default: 256MB
+    - name: storage
+      service_type: storage
+      requires_resources:
+        - frontend
+      fields:
+        - path: metadata.name
+          display_name: Storage name
+          editable: true
+          default: decl-storage
+        - path: metadata.labels
+          display_name: Storage labels
+          editable: true
+        - path: capacity
+          display_name: Capacity
+          editable: true
+          default: 1Gi
+        - path: volume_name
+          display_name: Volume name
+          editable: true
+          default: decl-volume
+        - path: provider_hints.kubernetes.storage_class
+          display_name: Storage class
+          editable: false
+          default: hostpath-csi
+        - path: provider_hints.kubernetes.access_mode
+          display_name: Access mode
+          editable: false
+          default: ReadWriteOnce
