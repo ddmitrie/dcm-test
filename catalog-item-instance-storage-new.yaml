@@ -1,0 +1,17 @@
+api_version: v1alpha1
+kind: CatalogItemInstance
+metadata:
+  name: gitops-two-tier-storage-new
+spec:
+  display_name: gitops-two-tier-storage-new
+  catalog_item_id: embedded-storage-smoke-test
+  user_values:
+    - resource: storage
+      path: metadata.name
+      value: gitops-storage-volume-new
+    - resource: storage
+      path: capacity
+      value: 1Gi
+    - resource: storage
+      path: volume_name
+      value: gitops-storage-volume-new
