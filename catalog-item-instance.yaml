@@ -3,7 +3,7 @@ kind: CatalogItemInstance
 metadata:
   name: gitops-two-tier-web
 spec:
-  display_name: gitops-two-tier-web
+  display_name: "gitops-two-tier-web
   catalog_item_id: flpath-4894-two-tier-web
   user_values:
     - resource: backend
