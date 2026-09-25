@@ -11,7 +11,7 @@ spec:
       value: gitops-backend
     - resource: backend
       path: image.reference
-      value: docker.io/library/nginx:alpine
+      value: docker.io/library/nginx:stable-alpine
     - resource: frontend
       path: metadata.name
       value: gitops-frontend
